@@ -27,6 +27,7 @@ Route::middleware('auth')
         Route::get('/', 'HomeController@index') -> name('index'); 
 
         // rotte protette da password
+        Route::resource('/posts','PostsController');
     });
 
 
