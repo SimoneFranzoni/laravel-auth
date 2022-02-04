@@ -28,7 +28,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -39,7 +39,16 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Per controllare se i dati arrivano
+        //dd($request->all());
+        $data = $request -> all();
+
+        $new_post = new Post();
+        $new_post -> fill($data);
+        $new_post -> slug = Post::generateSlug($new_post -> title);
+        $new_post -> save();
+        return redirect() -> route('admin.posts.show', $new_post);
+
     }
 
     /**

@@ -7,6 +7,9 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+
+    protected $fillable = ['title', 'content'];
+
     //verifica unicità slug    
     public static function generateSlug($title){
 
